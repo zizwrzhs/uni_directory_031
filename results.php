@@ -51,19 +51,23 @@
 
         switch($type){
             case 'all':
-                $sql = "SELECT S.*, CASE WHEN U.AM_ID IS NOT NULL THEN 'Προπτυχιακός' WHEN P.AM_ID IS NOT NULL THEN 'Μεταπτυχιακός' WHEN PTC.AM_ID IS NOT NULL THEN 'PTC' ELSE 'unknown' END AS student_type FROM STUDENT S LEFT JOIN UNDERGRADUATE U ON S.AM_ID = U.AM_ID LEFT JOIN POSTGRADUATE P ON S.AM_ID = P.AM_ID LEFT JOIN PTC ON S.AM_ID = PTC.AM_ID WHERE DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT s.*, CASE WHEN u.AM_ID IS NOT NULL THEN 'Προπτυχιακός' 
+                                        WHEN p.AM_ID IS NOT NULL THEN 'Μεταπτυχιακός'
+                                        WHEN ptc.AM_ID IS NOT NULL THEN 'PTC' ELSE '-' END AS student_type
+                        FROM student s LEFT JOIN undergraduate u ON s.AM_ID = u.AM_ID LEFT JOIN postgraduate p ON s.AM_ID = p.AM_ID LEFT JOIN ptc ON s.AM_ID = ptc.AM_ID 
+                        WHERE DEPT_ID = '$DEPT_ID'";
                 break; 
             case 'under':
-                $sql = "SELECT * FROM STUDENT S, UNDERGRADUATE U WHERE S.AM_ID = U.AM_ID AND DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT * FROM student s, undergraduate u WHERE s.AM_ID = u.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'post':    
-                $sql = "SELECT * FROM STUDENT S, POSTGRADUATE P WHERE S.AM_ID = P.AM_ID AND DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT * FROM STUDENT S, postgraduate p WHERE s.AM_ID = p.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'ptc':
-                $sql = "SELECT * FROM STUDENT S, PTC WHERE S.AM_ID = PTC.AM_ID AND DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT * FROM STUDENT S, ptc WHERE s.AM_ID = ptc.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             default:
-                echo "Invalid type";
+                echo "Invalid Type";
                 exit;
         }
 
