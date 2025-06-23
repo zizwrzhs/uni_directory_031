@@ -54,13 +54,13 @@
                 $sql = "SELECT S.*, CASE WHEN U.AM_ID IS NOT NULL THEN 'Προπτυχιακός' WHEN P.AM_ID IS NOT NULL THEN 'Μεταπτυχιακός' WHEN PTC.AM_ID IS NOT NULL THEN 'PTC' ELSE 'unknown' END AS student_type FROM STUDENT S LEFT JOIN UNDERGRADUATE U ON S.AM_ID = U.AM_ID LEFT JOIN POSTGRADUATE P ON S.AM_ID = P.AM_ID LEFT JOIN PTC ON S.AM_ID = PTC.AM_ID WHERE DEPT_ID = '$DEPT_ID'";
                 break; 
             case 'under':
-                $sql = strtoupper("SELECT * FROM STUDENT S, UNDERGRADUATE U WHERE S.AM_ID = U.AM_ID AND DEPT_ID = '$DEPT_ID'");
+                $sql = "SELECT * FROM STUDENT S, UNDERGRADUATE U WHERE S.AM_ID = U.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'post':    
-                $sql = strtoupper("SELECT * FROM STUDENT S, POSTGRADUATE P WHERE S.AM_ID = P.AM_ID AND DEPT_ID = '$DEPT_ID'");
+                $sql = "SELECT * FROM STUDENT S, POSTGRADUATE P WHERE S.AM_ID = P.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'ptc':
-                $sql = strtoupper("SELECT * FROM STUDENT S, PTC WHERE S.AM_ID = PTC.AM_ID AND DEPT_ID = '$DEPT_ID'");
+                $sql = "SELECT * FROM STUDENT S, PTC WHERE S.AM_ID = PTC.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             default:
                 echo "Invalid type";
