@@ -61,10 +61,10 @@
                 $sql = "SELECT * FROM student s, undergraduate u WHERE s.AM_ID = u.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'post':    
-                $sql = "SELECT * FROM STUDENT S, postgraduate p WHERE s.AM_ID = p.AM_ID AND DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT * FROM student s, postgraduate p WHERE s.AM_ID = p.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             case 'ptc':
-                $sql = "SELECT * FROM STUDENT S, ptc WHERE s.AM_ID = ptc.AM_ID AND DEPT_ID = '$DEPT_ID'";
+                $sql = "SELECT * FROM student s, ptc WHERE s.AM_ID = ptc.AM_ID AND DEPT_ID = '$DEPT_ID'";
                 break;
             default:
                 echo "Invalid Type";

@@ -8,7 +8,12 @@
 </head>
 <body>
     <ul>
-        <li><a href="student_tour.html">Εμφάνιση φοιτητών</a></li>
+        <?php
+            $DEPT_ID = $_GET['DEPT_ID'];
+            
+            echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Φοιτητών</a></li>";
+            echo "<li><a href='professor.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Καθηγητών</a></li>";
+        ?>
     </ul>
 </body>
 </html>
