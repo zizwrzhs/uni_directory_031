@@ -11,8 +11,10 @@
         <?php
             $DEPT_ID = $_GET['DEPT_ID'];
             
-            echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Φοιτητών</a></li>";
-            echo "<li><a href='professor.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Καθηγητών</a></li>";
+            echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Φοιτητές</a></li>";
+            echo "<li><a href='professor.php?DEPT_ID=$DEPT_ID'>Καθηγητές</a></li>";
+            echo "<li><a href='course.php?DEPT_ID=$DEPT_ID'>Μαθήματα</a></li>";
+            echo "<li><a href='department.php?DEPT_ID=$DEPT_ID'>Στοιχεία Τμήματος</a></li>";
         ?>
     </ul>
 </body>
