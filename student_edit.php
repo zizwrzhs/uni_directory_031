@@ -35,7 +35,7 @@
             }
         }
     ?>
-    <form action="student_update.php?type=" method="POST">
+    <?php $type = $_GET['type']; $type1 = $_GET['type1']; echo "<form action='student_update.php?type=$type&type1=$type1' method='POST'>"; ?>
         Αριθμός Μητρώου: <input id='AM_ID' name='AM_ID' type='text' name="OLD_AM_ID" value="<?php echo $AM_ID; ?>"><br>
         Τμήμα:
         <select id='DEPT_ID' name='DEPT_ID'>
@@ -57,7 +57,6 @@
         </select><br>
         Σύμβουλος Καθηγητής:
         <select id='PROF_ID' name='PROF_ID'>
-            <option value=''>Κανείς</option>
             <?php
                 $sql = "SELECT PROF_ID, ProfFname, ProfLname FROM professor WHERE DEPT_ID = '$DEPT_ID'";
                 $result = $conn->query($sql);
@@ -124,5 +123,6 @@
         ?>
         <input type='submit' value='Ενημέρωση Στοιχείων'>
     </form>
+    <p><a href='student_showedit_results.php?DEPT_ID=<?php echo $DEPT_ID; ?>&type=<?php echo $type1; ?>'>Επιστροφή στα αποτελέσματα</a></p>
 </body>
 </html>

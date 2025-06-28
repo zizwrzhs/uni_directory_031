@@ -13,7 +13,7 @@
 
             echo "<h2>Στοιχεία Φοιτητών</h2>";
             echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Εμφάνιση/Επεξεργασία Φοιτητών</a></li>";
-            echo "<li><a href='student_import.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Φοιτητή</a></li>";
+            echo "<li><a href='student_import_type.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Νέου Φοιτητή</a></li>";
             echo "<h2>Αναζήτηση Πληροφοριών</h2>";
         ?>
     </ul>

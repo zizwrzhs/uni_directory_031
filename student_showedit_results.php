@@ -38,6 +38,16 @@
 
     $result = $conn->query($sql);
 
+    if (isset($_GET['type']) && $_GET['type'] == 'all') {
+        echo "<h2>All Students</h2>";
+    } elseif (isset($_GET['type']) && $_GET['type'] == 'under') {
+        echo "<h2>Undergraduate Students</h2>";
+    } elseif (isset($_GET['type']) && $_GET['type'] == 'post') {
+        echo "<h2>Postgraduate Students</h2>";
+    } elseif (isset($_GET['type']) && $_GET['type'] == 'ptc') {
+        echo "<h2>PTC Students</h2>";
+    }
+
     if ($result->num_rows > 0) {
         echo "<tr>";
         echo "<th>No</th>";
@@ -136,16 +146,16 @@
             }
             if (isset($_GET['type']) && $_GET['type'] == 'all') {
                 if ($stype == 'Προπτυχιακός') {
-                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=under'>Edit</a></td>";
+                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=under&type1=$type'>Edit</a></td>";
                 } elseif ($stype == 'Μεταπτυχιακός') {
-                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=post'>Edit</a></td>";
+                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=post&type1=$type'>Edit</a></td>";
                 } elseif ($stype == 'PTC') {
-                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=ptc'>Edit</a></td>";
+                    echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=ptc&type1=$type'>Edit</a></td>";
                 }
             } else {
-                echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=$type'>Edit</a></td>";
+                echo "<td><a href='student_edit.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type=$type&type1=$type'>Edit</a></td>";
             }
-            echo "<td><a href='student_delete.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID'>Delete</a></td>";
+            echo "<td><a href='student_delete.php?AM_ID=$AM_ID&DEPT_ID=$DEPT_ID&type1=$type'>Delete</a></td>";
             echo "</tr>";
         }
         echo "</table>";

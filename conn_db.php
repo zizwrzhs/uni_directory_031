@@ -2,7 +2,7 @@
     $server = "localhost";
     $user = "root";
     $password = "";
-    $name = "uni_directory";
+    $name = "uni_test";
     $conn = new mysqli($server, $user, $password, $name);
 
     if ($conn->connect_error) {

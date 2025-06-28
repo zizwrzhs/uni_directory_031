@@ -12,6 +12,7 @@
 
     $AM_ID = $_GET['AM_ID'];
     $DEPT_ID = $_GET['DEPT_ID'];
+    $type1 = $_GET['type1'];
 
     $sql = "DELETE FROM student WHERE AM_ID = '$AM_ID' AND DEPT_ID = '$DEPT_ID'";
     
@@ -20,7 +21,7 @@
     }  else {
         echo "<p>Σφάλμα κατά τη διαγραφή του φοιτητή: " . $conn->error . "</p>";
     }
-    echo "<p><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=all'>Επιστροφή στη λίστα φοιτητών</a></p>";
+    echo "<p><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=$type1'>Επιστροφή στη λίστα φοιτητών</a></p>";
     $conn->close();
 ?>
 </body>
