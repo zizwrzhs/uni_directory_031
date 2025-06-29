@@ -15,6 +15,11 @@
             echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Εμφάνιση/Επεξεργασία Φοιτητών</a></li>";
             echo "<li><a href='student_import_type.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Νέου Φοιτητή</a></li>";
             echo "<h2>Αναζήτηση Πληροφοριών</h2>";
+            echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=register'>Σε ποια μαθήματα έχει εγγραφεί κάποιος φοιτητής;</a></li>";
+            echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=attend'>Μαθήματα που έχει παρακολουθήσει κάποιος φοιτητής</a></li>";
+            echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=attend_prof'>Πληροφορίες όλων των μαθημάτων που έχει παρακολουθήσει κάποιος φοιτητής με κάποιον καθηγητή</a></li>";
+            echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=avg'>Μέσος όρος βαθμολογίας φοιτητή</a></li>";
+            echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=avg_passed'>Μέσος όρος βαθμολογίας φοιτητή που πέρασε</a></li>";
         ?>
     </ul>
 </body>

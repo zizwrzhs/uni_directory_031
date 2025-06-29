@@ -26,17 +26,18 @@
     Σύμβουλος Καθηγητής:
     <select id='PROF_ID' name='PROF_ID'>
         <?php
-            $sql = "SELECT PROF_ID, ProfFname, ProfLname FROM professor WHERE DEPT_ID = '$DEPT_ID'";
+            $sql = "SELECT PROF_ID, ProfFname, ProfMname, ProfLname FROM professor WHERE DEPT_ID = '$DEPT_ID'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $prof_id = $row["PROF_ID"];
                     $proffname = $row["ProfFname"];
+                    $profmname = $row["ProfMname"];
                     $proflname = $row["ProfLname"];
                     if ($PROF_ID == $prof_id) {
-                        echo "<option value='$prof_id' selected>$proffname $proflname - $prof_id</option>";
+                        echo "<option value='$prof_id' selected>$proffname $profmname $proflname - $prof_id</option>";
                     } else {
-                        echo "<option value='$prof_id'>$proffname $proflname - $prof_id</option>";
+                        echo "<option value='$prof_id'>$proffname $profmname $proflname - $prof_id</option>";
                     }
                 }
             }
@@ -74,6 +75,6 @@
     ?>
     <input type="submit" value="Εισαγωγή Φοιτητή">
 </form>
-<p><a href='student_showedit_results.php?DEPT_ID=<?php echo $DEPT_ID; ?>&type=<?php echo $type; ?>'>Επιστροφή στα αποτελέσματα</a></p>
+<p><a href='student.php?DEPT_ID=<?php echo $DEPT_ID; ?>&type=<?php echo $type; ?>'>Επιστροφή</a></p>
 </body>
 </html>
