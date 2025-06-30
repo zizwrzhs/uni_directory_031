@@ -10,6 +10,14 @@
 <?php
     $DEPT_ID = $_GET['DEPT_ID'];
 
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+    echo "<li><a href='student_import_type.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+
     $sql = "SELECT s.PROF_ID, ProfFname, ProfMname, ProfLname FROM student s, professor p WHERE s.DEPT_ID = '$DEPT_ID' AND s.PROF_ID = p.PROF_ID";
 
     include 'conn_db.php';
@@ -75,6 +83,5 @@
     ?>
     <input type="submit" value="Εισαγωγή Φοιτητή">
 </form>
-<p><a href='student.php?DEPT_ID=<?php echo $DEPT_ID; ?>&type=<?php echo $type; ?>'>Επιστροφή</a></p>
 </body>
 </html>

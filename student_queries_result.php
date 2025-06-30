@@ -10,12 +10,21 @@
     <?php
         $DEPT_ID = $_GET['DEPT_ID'];
         $query = $_GET['query'];
+
+        echo "<ul>";
+        echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+        echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+        echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+        echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=$query'>Επιστροφή</a></li>";
+        echo "</ul>";
+        echo "<hr>";
+        
         $AM_ID = $_POST['AM_ID'];
 
         include 'conn_db.php';
 
         if ($query == 'register') {
-            $sql = "SELECT c.COURSE_ID, c.CourseName FROM course c, register r WHERE c.COURSE_ID = r.COURSE_ID AND r.AM_ID = '$AM_ID'";
+            $sql = "SELECT c.COURSE_ID, c.CourseName FROM course c, register r WHERE c.COURSE_ID = r.COURSE_ID AND r.AM_ID = '$AM_ID' ORDER BY COURSE_ID";
             $result = $conn->query($sql);
             echo "<h2>Courses Registered by $AM_ID</h2>";
             if ($result->num_rows > 0) {
@@ -28,7 +37,7 @@
                 echo "No courses registered.";
             }
         } elseif ($query == 'attend') {
-            $sql = "SELECT c.COURSE_ID, c.CourseName, p.PROF_ID, p.ProfFname, p.ProfMname, p.ProfLname, e.Grade FROM course c, professor p, attend a LEFT JOIN examined e ON a.AM_ID = e.AM_ID AND a.COURSE_ID = e.COURSE_ID WHERE a.AM_ID = '$AM_ID' AND a.COURSE_ID = c.COURSE_ID AND p.PROF_ID = a.PROF_ID;";
+            $sql = "SELECT c.COURSE_ID, c.CourseName, p.PROF_ID, p.ProfFname, p.ProfMname, p.ProfLname, e.Grade FROM course c, professor p, attend a LEFT JOIN examined e ON a.AM_ID = e.AM_ID AND a.COURSE_ID = e.COURSE_ID WHERE a.AM_ID = '$AM_ID' AND a.COURSE_ID = c.COURSE_ID AND p.PROF_ID = a.PROF_ID ORDER BY COURSE_ID;";
             $result = $conn->query($sql);
             echo "<h2>Courses Attended by $AM_ID</h2>";
             if ($result->num_rows > 0) {
@@ -42,7 +51,7 @@
             }
         } elseif ($query == 'attend_prof') {
             $PROF_ID = $_POST['PROF_ID'];
-            $sql = "SELECT c.*, a.AttendDate, e.Grade FROM COURSE c, ATTEND a LEFT JOIN EXAMINED e ON a.AM_ID = e.AM_ID AND a.COURSE_ID = e.COURSE_ID WHERE a.AM_ID = '$AM_ID' AND a.PROF_ID = '$PROF_ID' AND a.COURSE_ID = c.COURSE_ID;";
+            $sql = "SELECT c.*, a.AttendDate, e.Grade FROM COURSE c, ATTEND a LEFT JOIN EXAMINED e ON a.AM_ID = e.AM_ID AND a.COURSE_ID = e.COURSE_ID WHERE a.AM_ID = '$AM_ID' AND a.PROF_ID = '$PROF_ID' AND a.COURSE_ID = c.COURSE_ID ORDER BY COURSE_ID;";
             $result = $conn->query($sql);
             echo "<h2>Courses Attended by $AM_ID with Professor $PROF_ID</h2>";
             if ($result->num_rows > 0) {

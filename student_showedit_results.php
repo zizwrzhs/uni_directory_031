@@ -12,6 +12,14 @@
     include 'conn_db.php';
 
     $DEPT_ID = $_GET['DEPT_ID'];
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+    echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+    
     $type = $_GET['type'];
 
     switch($type){

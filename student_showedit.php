@@ -7,15 +7,21 @@
     <title>University Directory</title>
 </head>
 <body>
-    <ul>
-        <?php
-            $DEPT_ID = $_GET['DEPT_ID'];
+    <?php
+        $DEPT_ID = $_GET['DEPT_ID'];
+        echo "<ul>";
+        echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+        echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+        echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+        echo "</ul>";
+        echo "<hr>";
 
-            echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=all'>Εμφάνιση όλων των φοιτητών</a></li>";
-            echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=under'>Εμφάνιση προπτυχιακών φοιτητών</a></li>";
-            echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=post'>Εμφάνιση μεταπτυχιακών φοιτητών</a></li>";
-            echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=ptc'>Εμφάνιση PTC</a></li>";
-        ?>
-    </ul>
+        echo "<ul>";
+        echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=all'>Εμφάνιση όλων των φοιτητών</a></li>";
+        echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=under'>Εμφάνιση προπτυχιακών φοιτητών</a></li>";
+        echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=post'>Εμφάνιση μεταπτυχιακών φοιτητών</a></li>";
+        echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=ptc'>Εμφάνιση PTC</a></li>";
+        echo "</ul>";
+    ?>
 </body>
 </html>

@@ -14,6 +14,15 @@
     $type1 = $_GET['type1'];
 
     $DEPT_ID = $_POST['DEPT_ID'];
+
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+    echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+
     $AM_ID = (isset($_POST['AM_ID']) && $_POST['AM_ID'] != '') ? $_POST['AM_ID'] : null;
     if ($AM_ID === null) {
         echo "<h3>Σφάλμα: Παρακαλώ εισάγετε τον Αριθμό Μητρώου του φοιτητή.</h3>";
@@ -91,7 +100,7 @@
     
     try {
         $conn->query($sql);
-        echo "<p>Ο φοιτητής με Αριθμό Μητρώου $AM_ID ενημερώθηκε επιτυχώς.</p>";
+        echo "<h3>Ο φοιτητής με Αριθμό Μητρώου $AM_ID ενημερώθηκε επιτυχώς.</h3>";
     } catch (Exception $e) {
         echo "<h3>Σφάλμα κατά την ενημέρωση του φοιτητή: </h3>";
         echo "<p>Παρακαλώ ελέγξτε τα δεδομένα σας και προσπαθήστε ξανά.</p>";
@@ -114,7 +123,7 @@
         $sql = "UPDATE undergraduate SET AdmissionRank = '$AdmissionRank', AdmissionType = '$AdmissionType' WHERE AM_ID = '$AM_ID'";
         try {
             $conn->query($sql);
-            echo "<p>Οι πληροφορίες προπτυχιακού φοιτητή ενημερώθηκαν επιτυχώς.</p>";
+            echo "<h3>Οι πληροφορίες προπτυχιακού φοιτητή ενημερώθηκαν επιτυχώς.</h3>";
         } catch (Exception $e) {
             echo "<h3>Σφάλμα κατά την ενημέρωση των πληροφοριών προπτυχιακού φοιτητή: </h3>";
             echo "<p>Παρακαλώ ελέγξτε τα δεδομένα σας και προσπαθήστε ξανά.</p>";
@@ -128,7 +137,7 @@
         $sql = "UPDATE postgraduate SET FirstDegree = '$FirstDegree' WHERE AM_ID = '$AM_ID'";
         try {
             $conn->query($sql);
-            echo "<p>Οι πληροφορίες μεταπτυχιακού φοιτητή ενημερώθηκαν επιτυχώς.</p>";
+            echo "<h3>Οι πληροφορίες μεταπτυχιακού φοιτητή ενημερώθηκαν επιτυχώς.</h3>";
         } catch (Exception $e) {
             echo "<h3>Σφάλμα κατά την ενημέρωση των πληροφοριών μεταπτυχιακού φοιτητή: </h3>";
             echo "<p>Παρακαλώ ελέγξτε τα δεδομένα σας και προσπαθήστε ξανά.</p>";
@@ -146,14 +155,13 @@
         $sql = "UPDATE ptc SET UniversityOfOrigin = '$UniversityOfOrigin', DepartmentOfOrigin = '$DepartmentOfOrigin' WHERE AM_ID = '$AM_ID'";
         try {
             $conn->query($sql);
-            echo "<p>Οι πληροφορίες PTC φοιτητή ενημερώθηκαν επιτυχώς.</p>";
+            echo "<h3>Οι πληροφορίες PTC φοιτητή ενημερώθηκαν επιτυχώς.</h3>";
         } catch (Exception $e) {
             echo "<h3>Σφάλμα κατά την ενημέρωση των πληροφοριών PTC φοιτητή: </h3>";
             echo "<p>Παρακαλώ ελέγξτε τα δεδομένα σας και προσπαθήστε ξανά.</p>";
             echo "<p>Σφάλμα: " . $e->getMessage() . "</p>";
         }
     }
-    echo "<p><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=$type1'>Επιστροφή στα αποτελέσματα</a></p>";
     $conn->close();
 ?>
 </body>

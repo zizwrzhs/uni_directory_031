@@ -34,8 +34,19 @@
                 $StudCitizenship = $row["StudCitizenship"];
             }
         }
-    ?>
-    <?php $type = $_GET['type']; $type1 = $_GET['type1']; echo "<form action='student_update.php?type=$type&type1=$type1' method='POST'>"; ?>
+    $type = $_GET['type']; 
+    $type1 = $_GET['type1'];
+
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
+    echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Επιστροφή στα Είδη Φοιτητών</a></li>";
+    echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=$type1'>Επιστροφή</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+    
+    echo "<form action='student_update.php?type=$type&type1=$type1' method='POST'>"; ?>
         Αριθμός Μητρώου: <input id='AM_ID' name='AM_ID' type='text' name="OLD_AM_ID" value="<?php echo $AM_ID; ?>"><br>
         Τμήμα:
         <select id='DEPT_ID' name='DEPT_ID'>
@@ -123,6 +134,5 @@
         ?>
         <input type='submit' value='Ενημέρωση Στοιχείων'>
     </form>
-    <p><a href='student_showedit_results.php?DEPT_ID=<?php echo $DEPT_ID; ?>&type=<?php echo $type1; ?>'>Επιστροφή στα αποτελέσματα</a></p>
 </body>
 </html>

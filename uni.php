@@ -8,6 +8,10 @@
 </head>
 <body>
     <ul>
+        <li><a href='index.html'>Αρχική Σελίδα</a></li>
+    </ul>
+    <hr>
+    <ul>
         <?php
             $DEPT_ID = $_GET['DEPT_ID'];
             
