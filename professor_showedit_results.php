@@ -7,6 +7,17 @@
     <title>University Directory</title>
 </head>
 <body>
+<?php
+    $DEPT_ID = $_GET['DEPT_ID'];
+    
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "<li><a href='professor.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Καθηγητών</a></li>";
+    echo "<li><a href='professor_showedit.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+?>
 <table>
     <tr>
         <th>No</th>
@@ -26,6 +37,8 @@
         <th>Speciality</th>
         <th>Rank</th>
         <th>Subject Area</th>
+        <th></th>
+        <th></th>
     </tr>
     <?php
         include 'conn_db.php';
@@ -36,15 +49,19 @@
         switch($type){
             case 'all':
                 $sql = "SELECT * FROM professor p WHERE DEPT_ID = '$DEPT_ID'";
+                echo "<h2>All Professors in Department $DEPT_ID</h2>";
                 break; 
             case 'prof':
                 $sql = "SELECT * FROM professor p WHERE DEPT_ID = '$DEPT_ID' AND  ProfRank = 'Professor'";
+                echo "<h2>Professors in Department $DEPT_ID</h2>";
                 break;
             case 'assoc':    
                 $sql = "SELECT * FROM professor p WHERE DEPT_ID = '$DEPT_ID' AND  ProfRank = 'Associate Professor'";
+                echo "<h2>Associate Professors in Department $DEPT_ID</h2>";
                 break;
             case 'assis':
                 $sql = "SELECT * FROM professor p WHERE DEPT_ID = '$DEPT_ID' AND  ProfRank = 'Assistant Professor'";
+                echo "<h2>Assistant Professors in Department $DEPT_ID</h2>";
                 break;
             default:
                 echo "Invalid Type";
@@ -91,7 +108,8 @@
                 echo "<td>$ProfSpeciality</td>";
                 echo "<td>$ProfRank</td>";
                 echo "<td>$ProfSubjectArea</td>";
-                echo "</tr>";
+                echo "<td><a href='professor_edit.php?DEPT_ID=$DEPT_ID&PROF_ID=$PROF_ID&type=$type'>Edit</a></td>";
+                echo "<td><a href='professor_delete.php?DEPT_ID=$DEPT_ID&PROF_ID=$PROF_ID&type=$type'>Delete</a></td>";
             }
             echo "</table>";
         } else {

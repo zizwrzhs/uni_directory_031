@@ -25,7 +25,7 @@
                 $StudMname = $row["StudMname"];
                 $StudLname = $row["StudLname"];
                 $StudAddress = $row["StudAddress"];
-                $StudPhone = $row["StudPhoneNumber"];
+                $StudPhoneNumber = $row["StudPhoneNumber"];
                 $StudEmail = $row["StudEmail"];
                 $StudFatherName = $row["StudFatherName"];
                 $StudGender = $row["StudGender"];
@@ -89,7 +89,7 @@
         Μεσαίο Όνομα: <input id='StudMname' name='StudMname' type='text' value="<?php echo $StudMname; ?>"><br>
         Επώνυμο: <input id='StudLname' name='StudLname' type='text' value="<?php echo $StudLname; ?>"><br>
         Διεύθυνση: <input id='StudAddress' name='StudAddress' type='text' value="<?php echo $StudAddress; ?>"><br>
-        Τηλέφωνο: <input id='StudPhoneNumber' name='StudPhoneNumber' type='text' value="<?php echo $StudPhone; ?>"><br>
+        Τηλέφωνο: <input id='StudPhoneNumber' name='StudPhoneNumber' type='text' value="<?php echo $StudPhoneNumber; ?>"><br>
         Email: <input id='StudEmail' name='StudEmail' type='text' value="<?php echo $StudEmail; ?>"><br>
         Όνομα Πατέρα: <input id='StudFatherName' name='StudFatherName' type='text' value="<?php echo $StudFatherName; ?>"><br>
         Φύλο: 

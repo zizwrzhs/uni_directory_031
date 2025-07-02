@@ -2016,7 +2016,8 @@ INSERT INTO `undergraduate` (`AM_ID`, `AdmissionType`, `AdmissionRank`) VALUES
 -- Indexes for table `attend`
 --
 ALTER TABLE `attend`
-  ADD PRIMARY KEY (`AM_ID`,`COURSE_ID`,`PROF_ID`),
+  ADD PRIMARY KEY (`AM_ID`,`COURSE_ID`,`PROF_ID`, `AttendDate`),
+  ADD KEY `ATTEND_STUDENT_FK` (`AM_ID`),
   ADD KEY `ATTEND_COURSE_FK` (`COURSE_ID`),
   ADD KEY `ATTEND_PROF_FK` (`PROF_ID`);
 

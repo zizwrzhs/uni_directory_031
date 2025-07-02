@@ -18,7 +18,12 @@
         echo "<ul>";
         echo "<h2>Στοιχεία Φοιτητών</h2>";
         echo "<li><a href='student_showedit.php?DEPT_ID=$DEPT_ID'>Εμφάνιση/Επεξεργασία Φοιτητών</a></li>";
+        echo "<h2>Εισαγωγή Πληροφοριών</h2>";
         echo "<li><a href='student_import_type.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Νέου Φοιτητή</a></li>";
+        echo "<li><a href='student_attend_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Ημερομηνίας Παρακολούθησης Μαθήματος</a></li>";
+        echo "<li><a href='student_examined_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Εξέτασης</a></li>";
+        echo "<li><a href='student_register_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Εγγραφής Μαθήματος</a></li>";
+        echo "<li><a href='student_thesis_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Πτυχιακής Εργασίας</a></li>";
         echo "<h2>Αναζήτηση Πληροφοριών</h2>";
         echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=register'>Σε ποια μαθήματα έχει εγγραφεί κάποιος φοιτητής;</a></li>";
         echo "<li><a href='student_queries.php?DEPT_ID=$DEPT_ID&query=attend'>Μαθήματα που έχει παρακολουθήσει κάποιος φοιτητής</a></li>";

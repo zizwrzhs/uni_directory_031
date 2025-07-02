@@ -10,6 +10,19 @@
 <?php
     include 'conn_db.php';
 
+    $DEPT_ID = $_GET['DEPT_ID'];
+
+    echo "<ul>";
+    echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
+    echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+    echo "<ul>";
+    echo "<li><a href='course_import_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Μαθήματος</a></li>";
+    echo "<li><a href='course_showprereq.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Προαπαιτούμενων Μαθημάτων</a></li>";
+    echo "</ul>";
+    echo "<hr>";
+
     function ordinal($number) {
         $ends = ['th','st','nd','rd','th','th','th','th','th','th'];
         if (($number % 100) >= 11 && ($number % 100) <= 13)
@@ -45,8 +58,9 @@
                         <th>Category</th>
                         <th>ECTS</th>
                         <th>Load</th>
+                        <th></th>
+                        <th></th>
                     </tr>";
-            $count = 0;
             foreach($courses as $course) {
                 $CourseName = $course["CourseName"];
                 $COURSE_ID = $course["COURSE_ID"];
@@ -66,6 +80,8 @@
                 echo "<td>$CourseCategory</td>";
                 echo "<td>$CourseECTS</td>";
                 echo "<td>$CourseLoad</td>";
+                echo "<td><a href='course_prereq_import.php?COURSE_ID=$COURSE_ID'>Προσθήκη Προαπαιτούμενου</a></td>";
+                echo "<td><a href='course_delete.php?COURSE_ID=$COURSE_ID'>Διαγραφή</a></td>";
                 echo "</tr>";
             }
             echo "</table>";
