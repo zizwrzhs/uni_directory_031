@@ -8,6 +8,11 @@
     <title>Στοιχεία Τμήματος</title>
 </head>
 <body>
+    <ul>
+        <li><a href='index.html'>Αρχική Σελίδα</a></li>
+        <li><a href='uni.php?DEPT_ID=<?php echo $_GET['DEPT_ID']; ?>'>Επιστροφή στο μενού Τμήματος</a></li>
+    </ul>
+    <hr>
 <table>
     <tr>
         <th>Department ID</th>
