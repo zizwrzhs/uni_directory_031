@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="G. Georgopetris - I. K. Soukeras">
     <link rel="stylesheet" href="style.css">
-    <title>Μαθήματα</title>
+    <title>Εμφάνιση Προαπαιτούμενων Μαθημάτων</title>
 </head>
 <body>
 <?php
@@ -16,11 +16,7 @@
     echo "<ul>";
     echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
     echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
-    echo "</ul>";
-    echo "<hr>";
-    echo "<ul>";
-    echo "<li><a href='course_import_form.php?DEPT_ID=$DEPT_ID'>Εισαγωγή Μαθήματος</a></li>";
-    echo "<li><a href='course_prereq.php?DEPT_ID=$DEPT_ID'>Εμφάνιση Προαπαιτούμενων Μαθημάτων</a></li>";
+    echo "<li><a href='course.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Μαθημάτων</a></li>";
     echo "</ul>";
     echo "<hr>";
 
@@ -34,7 +30,7 @@
 
     $DEPT_ID = $_GET['DEPT_ID'];
 
-    $sql = "SELECT * FROM course WHERE DEPT_ID = '$DEPT_ID'";
+    $sql = "SELECT c.CourseSemester AS CourseSemester, c.COURSE_ID AS COURSE_ID, c.CourseName AS CourseName, p.COURSE_ID AS PREREQ_ID, p.CourseName AS PrereqName FROM requires r JOIN course c ON r.COURSE_ID = c.COURSE_ID JOIN course p ON r.PREREQ_ID = p.COURSE_ID WHERE c.DEPT_ID = '$DEPT_ID'";
 
     $result = $conn->query($sql);
 
@@ -51,38 +47,24 @@
             echo "<h2>$ordinal Semester</h2>";
             echo "<table>
                     <tr>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Department ID</th>
-                        <th>Semester</th>
-                        <th>Programme</th>
-                        <th>Category</th>
-                        <th>ECTS</th>
-                        <th>Load</th>
-                        <th></th>
+                        <th>Κωδικός Μαθήματος</th>
+                        <th>Όνομα Μαθήματος</th>
+                        <th>Κωδικός Προαπαιτούμενου</th>
+                        <th>Όνομα Προαπαιτούμενου</th>
                         <th></th>
                     </tr>";
             foreach($courses as $course) {
                 $COURSE_ID = $course["COURSE_ID"];
                 $CourseName = $course["CourseName"];
-                $DEPT_ID = $course["DEPT_ID"];
-                $CourseSemester = $course["CourseSemester"];
-                $CourseProgramme = $course["CourseProgramme"];
-                $CourseCategory = $course["CourseCategory"];
-                $CourseECTS = $course["CourseECTS"];
-                $CourseLoad = $course["CourseLoad"];
-                
+                $PREREQ_ID = $course["PREREQ_ID"];
+                $PrereqName = $course["PrereqName"];
+
                 echo "<tr>";
                 echo "<td>$COURSE_ID</td>";
                 echo "<td>$CourseName</td>";
-                echo "<td>$DEPT_ID</td>";
-                echo "<td>$CourseSemester</td>";
-                echo "<td>$CourseProgramme</td>";
-                echo "<td>$CourseCategory</td>";
-                echo "<td>$CourseECTS</td>";
-                echo "<td>$CourseLoad</td>";
-                echo "<td><a href='course_prereq_import_form.php?COURSE_ID=$COURSE_ID&DEPT_ID=$DEPT_ID'>Προσθήκη Προαπαιτούμενου</a></td>";
-                echo "<td><a href='course_delete.php?COURSE_ID=$COURSE_ID&DEPT_ID=$DEPT_ID'>Διαγραφή</a></td>";
+                echo "<td>$PREREQ_ID</td>";
+                echo "<td>$PrereqName</td>";
+                echo "<td><a href='course_prereq_delete.php?DEPT_ID=$DEPT_ID&COURSE_ID=$COURSE_ID&PREREQ_ID=$PREREQ_ID'>Διαγραφή Προαπαιτούμενου</a></td>";
                 echo "</tr>";
             }
             echo "</table>";

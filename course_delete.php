@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="G. Georgopetris - I. K. Soukeras">
     <link rel="stylesheet" href="style.css">
-    <title>Διαγραφή Φοιτητή</title>
+    <title>Διαγραφή Μαθήματος</title>
 </head>
 <body>
 <?php
     include 'conn_db.php';
 
-    $AM_ID = $_GET['AM_ID'];
+    $COURSE_ID = $_GET['COURSE_ID'];
     $DEPT_ID = $_GET['DEPT_ID'];
-    $type1 = $_GET['type1'];
 
     echo "<ul>";
     echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
     echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
-    echo "<li><a href='student.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Φοιτητών</a></li>";
-    echo "<li><a href='student_showedit_results.php?DEPT_ID=$DEPT_ID&type=$type1'>Επιστροφή</a></li>";
+    echo "<li><a href='course.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Μαθημάτων</a></li>";
     echo "</ul>";
     echo "<hr>";
 
-    $sql = "DELETE FROM student WHERE AM_ID = '$AM_ID' AND DEPT_ID = '$DEPT_ID'";
+    $sql = "DELETE FROM course WHERE COURSE_ID = '$COURSE_ID' AND DEPT_ID = '$DEPT_ID'";
     
     if ($result = $conn->query($sql)) {
-        echo "<h3>Ο φοιτητής με Αριθμό Μητρώου $AM_ID διαγράφηκε επιτυχώς.</h3>";
+        echo "<h3>Το μάθημα με Κωδικό $COURSE_ID διαγράφηκε επιτυχώς.</h3>";
+        echo "<p><a href='course.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></p>";
     }  else {
-        echo "<h3>Σφάλμα κατά τη διαγραφή του φοιτητή: " . $conn->error . "</h3>";
+        echo "<h3>Σφάλμα κατά τη διαγραφή του μαθήματος: " . $conn->error . "</h3>";
     }
     $conn->close();
 ?>

@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="G. Georgopetris - I. K. Soukeras">
-    <title>University Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <title><?php $DEPT_ID = $_GET['DEPT_ID']; $type = $_GET['type']; switch($type){ case 'all': echo "Όλοι οι Φοιτητές | Τμήμα "; break; case 'under': echo "Προπτυχιακοί Φοιτητές | Τμήμα "; break; case 'post': echo "Μεταπτυχιακοί Φοιτητές | Τμήμα "; break; case 'ptc': echo "PTC φοιτητές | Τμήμα "; break; } if ($DEPT_ID == '14731') { echo "Πληροφορικής"; } else if ($DEPT_ID == '26483') { echo "Οικόνομικών"; } else if ($DEPT_ID == '34892') { echo "Τουρισμού"; } else if ($DEPT_ID == '54856') { echo "Μαθηματικών"; } ?></title>
 </head>
 <body>
 <?php
-    $DEPT_ID = $_GET['DEPT_ID'];
-    
     echo "<ul>";
     echo "<li><a href='index.html'>Αρχική Σελίδα</a></li>";
     echo "<li><a href='uni.php?DEPT_ID=$DEPT_ID'>Επιστροφή στο μενού Τμήματος</a></li>";
@@ -21,8 +20,6 @@
 <table>
 <?php
     include 'conn_db.php';
-    
-    $type = $_GET['type'];
 
     switch($type){
         case 'all':

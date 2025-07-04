@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="G. Georgopetris - I. K. Soukeras">
-    <title>University Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Φόρμα Εγγραφής Μαθήματος</title>
 </head>
 <body>
 <?php
@@ -52,5 +53,8 @@
     </select><br>
     <input type="submit" value="Εισαγωγή Εγγραφής Μαθήματος">
 </form>
+<?php
+    $conn->close();
+?>
 </body>
 </html>

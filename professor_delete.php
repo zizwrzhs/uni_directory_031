@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="G. Georgopetris - I. K. Soukeras">
-    <title>University Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Διαγραφή Καθηγητή</title>
 </head>
 <body>
 <?php
@@ -26,6 +27,7 @@
     
     if ($result = $conn->query($sql)) {
         echo "<h3>Ο καθηγητής με Αριθμό Μητρώου $PROF_ID διαγράφηκε επιτυχώς.</h3>";
+        echo "<p><a href='professor.php?DEPT_ID=$DEPT_ID'>Επιστροφή</a></p>";
     }  else {
         echo "<h3>Σφάλμα κατά τη διαγραφή του καθηγητή: " . $conn->error . "</h3>";
     }
